@@ -290,7 +290,7 @@ class _AlertsScreenState extends ConsumerState<AlertsScreen> {
       color: cardColor,
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: iconColor.withOpacity(0.2),
+          backgroundColor: iconColor.withAlpha((0.2 * 255).round()),
           child: Icon(icon, color: iconColor),
         ),
         title: Text(

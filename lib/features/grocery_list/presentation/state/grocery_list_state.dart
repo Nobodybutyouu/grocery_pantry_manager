@@ -35,8 +35,17 @@ class GroceryListError extends GroceryListState {
   const GroceryListError(this.message);
 }
 
-class GroceryListSuccess extends GroceryListState {
+class GroceryListSuccess extends GroceryListLoaded {
   final String message;
 
-  const GroceryListSuccess(this.message);
+  const GroceryListSuccess({
+    required this.message,
+    required List<GroceryItemModel> items,
+    required int checkedCount,
+    required int uncheckedCount,
+  }) : super(
+          items: items,
+          checkedCount: checkedCount,
+          uncheckedCount: uncheckedCount,
+        );
 }

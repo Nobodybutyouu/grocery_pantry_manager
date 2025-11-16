@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/database/hive_registry.dart';
 import 'shared/theme.dart';
-import 'features/pantry_items/presentation/screens/pantry_list_screen.dart';
+import 'shared/widgets/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends ConsumerWidget {
       title: 'Grocery & Pantry Manager',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const PantryListScreen(),
+      home: const MainScreen(),
     );
   }
 }

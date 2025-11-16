@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../data/models/grocery_item_model.dart';
 import '../providers/grocery_list_provider.dart';
 import '../state/grocery_list_state.dart';
 import 'add_grocery_item_screen.dart';
@@ -202,12 +203,9 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
     }
 
     if (state is GroceryListLoaded || state is GroceryListSuccess) {
-      final items = state is GroceryListLoaded
+      final List<GroceryItemModel> itemsList = state is GroceryListLoaded
           ? state.items
-          : (state as GroceryListSuccess);
-
-      final loadedState = state is GroceryListLoaded ? state : null;
-      final itemsList = loadedState?.items ?? [];
+          : (state as GroceryListSuccess).items;
 
       if (itemsList.isEmpty) {
         return Center(
@@ -284,7 +282,11 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
     return const SizedBox();
   }
 
-  Widget _buildGroceryCard(item, controller, bool isChecked) {
+  Widget _buildGroceryCard(
+    GroceryItemModel item,
+    GroceryListController controller,
+    bool isChecked,
+  ) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       color: isChecked ? Colors.grey.shade100 : null,
